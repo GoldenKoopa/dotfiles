@@ -69,6 +69,16 @@ PS1="\n[\u@\h \W]$branch\$ "
 
 eval "$(tmuxifier init -)"
 
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 # set editor
 export EDITOR=nvim
 
