@@ -1,0 +1,58 @@
+
+[user]
+	email = 100142836+GoldenKoopa@users.noreply.github.com
+	name = GoldenKoopa
+	signingkey = B024D6C2BA88B6C3
+
+[init]
+	defaultBranch = main
+
+[core]
+    editor = nvim
+    filemode = false
+    excludeFiles = ~/.gitignore
+    whitespace = error
+
+[alias]
+    branch-is = !git branch --show-current | cowsay -n -f armadillo
+    which = "!f() { git branch | grep -i \"$1\"; }; f"
+    pu = !sh -c 'git branch --v | grep "\\[gone\\]" | awk "{print \\$1}" | xargs git branch -D' -
+    git = !git
+	dnoc = diff --name-only --cached
+    ol = "!sh -c 'git log --color=always --all --graph --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit | sed -E \"s/(feat:)/\\x1b[1;31m\\1\\x1b[0m/g; s/(fix:)/\\x1b[1;32m\\1\\x1b[0m/g; s/(chore:)/\\x1b[1;34m\\1\\x1b[0m/g\" | less -R'"
+
+    #    ol = "!git log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit | sed -E \"s/(feat:|fix:|chore:)/\\x1b[1;31m\\1\\x1b[0m/g\""
+	changedfiles = diff-tree --no-commit-id -r --name-only
+    diff-words = diff --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
+    aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
+
+
+[includeIf "gitdir/i:~/dev/gitlab/"]
+    path = ~/dev/gitlab/.gitconfig
+
+[diff "exif"]
+	textconv = exiftool
+    submodule = log
+
+[commit]
+	gpgsign = true
+    verbose = true
+
+[push]
+    default = current
+
+[diff]
+	colorMoved = zebra
+	submodule = log
+
+[merge]
+    conflictstyle = zdiff3
+
+[rerere]
+    enabled = true
+
+[status]
+	submoduleSummary = true
+
+[submodule]
+	recurse = true
