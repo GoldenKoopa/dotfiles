@@ -24,6 +24,23 @@
     #    ol = "!git log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit | sed -E \"s/(feat:|fix:|chore:)/\\x1b[1;31m\\1\\x1b[0m/g\""
 	changedfiles = diff-tree --no-commit-id -r --name-only
     diff-words = diff --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
+
+    wip = ! "f() { \
+		git add -A; \
+		git rm $(git ls-files --deleted) 2> /dev/null; \
+		git commit --no-verify -m '--wip-- [skip ci]'; \
+	}; f"
+	; unwip = ! "f() { \
+	; 	git log -n 1 | grep -q -c \"\\-\\-wip\\-\\-\" && git reset HEAD~1; \
+	; }; f"
+    unwip = "!f() { \
+        while git log -1 --pretty=%B | grep -q -- '--wip--'; do \
+            git reset --soft HEAD~1; \
+        done; \
+    }; f"
+	wips = ! git branch -v --no-abbrev | grep -- '--wip--'
+
+
     aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
 
 
