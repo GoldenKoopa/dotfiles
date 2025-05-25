@@ -56,6 +56,17 @@ function cowtune {
     forsay
 }
 
+# git
+# search repos and cd into it
+
+cdgitrepo() {
+  local repo
+  repo=$(find "$HOME/dev" -type d -name ".git" | xargs -I{} dirname {} | sort -u | fzf --preview 'tree -C {} | head -50')
+  if [ -n "$repo" ]; then
+    cd "$repo"
+  fi
+}
+
 # git branch
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'

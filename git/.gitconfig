@@ -39,6 +39,9 @@
         done; \
     }; f"
 	wips = ! git branch -v --no-abbrev | grep -- '--wip--'
+    repo-name = ! "[ -n \"$(git remote)\" ] && git remote -v | head -1 | cut -d ' ' -f 1 | grep -E --only-matching '([^:/ ]+/[^/ ]+)(\\.git)?$' | sed 's/\\.git$//' || basename $(pwd)"
+	branch-name = ! "git rev-parse HEAD >/dev/null 2>&1 && git rev-parse --abbrev-ref HEAD || echo '???no-branch???'"
+    repo-and-branch-name = ! "echo $(git repo-name)':'$(git branch-name)"
 
 
     aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
@@ -61,9 +64,11 @@
 [diff]
 	colorMoved = zebra
 	submodule = log
+    navigate = true
 
 [merge]
     conflictstyle = zdiff3
+    log = true
 
 [rerere]
     enabled = true
