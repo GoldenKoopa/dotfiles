@@ -61,7 +61,7 @@ function cowtune {
 
 cdgitrepo() {
   local repo
-  repo=$(find "$HOME/dev" -type d -name ".git" | xargs -I{} dirname {} | sort -u | fzf --preview 'tree -C {} | head -50')
+  repo=$(find "$HOME/dev" -maxdepth 5 -type d -name ".git" | xargs -I{} dirname {} | sort -u | fzf --preview 'tree -C --gitignore {} | head -50')
   if [ -n "$repo" ]; then
     cd "$repo"
   fi
