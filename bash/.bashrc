@@ -8,6 +8,7 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias dir='dir --color=auto'
+alias ln='ln -v'
 # PS1='[\u@\h \W]\$ ' --overwritten for git branch
 
 # custom
@@ -99,6 +100,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 export PATH=$HOME/.dotnet/tools:$PATH
+export PATH="$HOME/.local/bin:$PATH"
 
 source /home/koopa/.config/broot/launcher/bash/br
 
