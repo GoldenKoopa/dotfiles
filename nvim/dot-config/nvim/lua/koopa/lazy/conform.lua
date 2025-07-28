@@ -85,8 +85,12 @@ return {
 				-- Conform will run the first available formatter
 				javascript = { "prettierd", "prettier", stop_after_first = true },
 
-				-- java = { "google-java-format" },
-				java = { "clang-format" },
+                cpp = { "clang-format" },
+
+				java = { "google-java-format" },
+                xml = { "xmlformatter" },
+                html = { "htmlbeautifier" },
+				-- java = { "clang-format" },
 			},
 		})
 	end,

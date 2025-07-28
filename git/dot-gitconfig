@@ -10,8 +10,8 @@
 [core]
     editor = nvim
     filemode = false
-    excludeFiles = ~/.gitignore
     whitespace = error
+	excludesFile = ~/.gitignore
 
 [alias]
     branch-is = !git branch --show-current | cowsay -n -f armadillo
@@ -49,6 +49,9 @@
 
 [includeIf "gitdir/i:~/dev/gitlab/"]
     path = ~/dev/gitlab/.gitconfig
+
+[includeIf "gitdir/i:~/dev/second-github/"]
+    path = ~/dev/second-github/.gitconfig
 
 [diff "exif"]
 	textconv = exiftool

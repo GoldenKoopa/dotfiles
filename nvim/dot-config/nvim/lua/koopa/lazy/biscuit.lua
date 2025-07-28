@@ -1,7 +1,7 @@
 return {
 	"code-biscuits/nvim-biscuits",
 
-	event = "VeryLazy",
+	event = { "BufReadPost", "BufNewFile" },
 
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
@@ -9,6 +9,6 @@ return {
 
 	opts = {
 		cursor_line_only = true,
-        min_distance = 2,
+		min_distance = 2,
 	},
 }
