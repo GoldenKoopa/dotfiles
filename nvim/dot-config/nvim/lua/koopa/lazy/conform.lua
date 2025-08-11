@@ -88,9 +88,10 @@ return {
                 cpp = { "clang-format" },
 
 				java = { "google-java-format" },
+                -- java = { "clang-format" },
                 xml = { "xmlformatter" },
                 html = { "htmlbeautifier" },
-				-- java = { "clang-format" },
+                json = { "clang-format" },
 			},
 		})
 	end,
