@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-case "$(printf "kill\nsuspend\nreboot\nshutdown\nlock" | wofi --dmenu -i)" in
-	kill) ps -u $USER -o pid,comm,%cpu,%mem | wofi --dmenu -i -p Kill: | awk '{print $1}' | xargs -r kill ;;
+case "$(printf "kill\nsuspend\nreboot\nshutdown\nlock" | wofi -L 5 --dmenu -i)" in
+	kill) ps -u $USER -o pid,comm,%cpu,%mem | wofi -L 11 --dmenu -i -p Kill: | awk '{print $1}' | xargs -r kill ;;
 	suspend) systemctl suspend ;;
 	reboot) systemctl reboot ;;
 	shutdown) shutdown now ;;
