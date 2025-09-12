@@ -1,13 +1,10 @@
-
-
-
 vim.g.mapleader = " "
 
-vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- paste
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set({"n", "v"}, "<leader>Y", [["+Y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]])
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -28,3 +25,19 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("i", "<C-c>", "<Esc>")
+
+vim.keymap.set("v", "<leader>46", function()
+	vim.cmd("normal! c")
+	local selection = vim.fn.getreg('"')
+	local decoded = vim.fn.system("base64 --decode", selection)
+	vim.fn.setreg('"', decoded)
+	vim.cmd('normal! "0p')
+end, { noremap = true, silent = true })
+
+vim.keymap.set("v", "<leader>64", function()
+	vim.cmd("normal! c")
+	local selection = vim.fn.getreg('"')
+	local decoded = vim.fn.system("base64 -w 0", selection)
+	vim.fn.setreg('"', decoded)
+	vim.cmd('normal! "0p')
+end, { noremap = true, silent = true })
