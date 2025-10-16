@@ -15,7 +15,7 @@ for package in "${packages[@]}"; do
 done
 
 for dir in "$(ls -d */)"; do
-    stow "$dir" --dotfiles
+    stow "${dir%?}" --dotfiles
 done
 
 echo "done"
