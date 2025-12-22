@@ -16,7 +16,7 @@ local config = {
 		"-Dosgi.bundles.defaultStartLevel=4",
 		"-Declipse.product=org.eclipse.jdt.ls.core.product",
 		"-Dlog.protocol=true",
-		"-Dlog.level=ALL",
+		"-Dlog.level=INFO",
 		"-Xmx1g",
 		"--add-modules=ALL-SYSTEM",
 		"--add-opens",
@@ -87,3 +87,4 @@ vim.keymap.set(
 	"<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>",
 	{ desc = "Extract Method" }
 )
+vim.keymap.set("n", "<leader>vrrd", "<Esc><Cmd>lua require('jdtls').references()<CR>", { desc = "View references" })

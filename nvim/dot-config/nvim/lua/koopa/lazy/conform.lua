@@ -92,6 +92,7 @@ return {
 				xml = { "xmlformatter" },
 				html = { "htmlbeautifier" },
 				json = { "clang-format" },
+                sh = { "beautysh" },
 			},
 		})
 	end,
