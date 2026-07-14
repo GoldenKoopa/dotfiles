@@ -18,3 +18,4 @@ export PATH="$PATH:/home/koopa/.local/share/JetBrains/Toolbox/scripts"
 source /home/koopa/.config/broot/launcher/bash/br
 
 . "$HOME/.local/bin/env"
+. "$HOME/.cargo/env"
